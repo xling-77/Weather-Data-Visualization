@@ -1,0 +1,369 @@
+body{
+  margin: 0;
+  background-color: rgba(1, 13 , 41, 1);
+  /* 基本文字样式 */
+  line-height: 1.25;
+  font-size: 16px;
+  color: rgba(145, 95, 35, 1);
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
+}
+/* 滚动条只用设置父元素，悬停时滚动条显示 */
+*::-webkit-scrollbar{
+  width:5px;
+  height: 5px;
+}
+*::-webkit-scrollbar-track-piece{
+  background-color: transparent;
+}
+*::-webkit-scrollbar-corner{
+  display: none;
+}
+*::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color:rgba(17, 193, 199, 0.5);
+  transition: all 2s ease-in-out;
+}
+*:hover::-webkit-scrollbar-thumb{
+  background-color: rgba(17, 193, 199, 1);
+}
+
+/* 统一盒子样式 */
+.boxSet{
+  box-sizing: border-box;
+  padding: 2rem;
+  box-shadow: inset 0 0 1rem 0.5rem rgba(1, 32, 123, 1);
+  overflow:scroll;
+  text-align: center;
+}
+
+/* 图标统一样式 */
+.iconfont{
+  line-height: 0;
+  color: inherit;
+  font-size: 2.5rem;
+}
+/* 小标题样式 */
+h2{
+  margin: 0;
+  text-align: left;
+}
+/* 小标题前的圆形标记 */
+h2::before{
+  display: inline-block;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  content: '';
+  background-color: #11c1c7;
+}
+
+#app{
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+}
+/* 二-2 头部样式，头部包括：更新时间、城市选择组件 */
+#header{
+  box-sizing: border-box;
+  position: sticky;
+  top: -10px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  justify-content: stretch;
+  padding: 15px;
+  z-index: 1;
+  background-color: #0e3265;
+}
+/* 二-2 头部样式-更新时间 */
+#header > h3{
+  margin: 0;
+  margin-left: 60px;
+  text-align: left;
+}
+
+/* 二-3 整体布局样式 */
+#content {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  /* 网格式布局：2*4 = 8 */
+  display: grid;
+  grid: repeat(2,1fr) / repeat(4,1fr);
+  gap: 10px;
+  grid-gap: 10px;
+  grid-template-areas:"a b b b""c d d e";
+  z-index: -1;
+}
+#wind{
+  grid-area: a;
+}
+#now{
+  grid-area: b;
+}
+#riseSet{
+  grid-area: c;
+}
+#daysTemp{
+  grid-area: d;
+}
+#rain{
+  grid-area: e;
+}
+
+/* 二-3.3 实时风向图 */
+#windChart{
+  margin: 0 auto;
+  width: 100%;
+  height: 90%;
+}
+
+/* 二-3.1 实时日出日落进度图 */
+/* 进度条容器布局 */
+.sunChart{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+/* 进度条 */
+.bar{
+  margin: 20% auto;
+  width: 60%;
+  height: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 1px 2px rgba(1, 32, 123, 1);
+}
+/* 进度条图标 */
+.barIcon{
+  float:left;
+  box-sizing: border-box;
+  margin-top: -2%;
+  left: -3%;
+  width: 20px;
+  height: 20px;
+  font-size: 1.25rem;
+  transform-origin: center;
+  text-align: center;
+  position: relative;
+}
+/* 太阳图标样式及动画 */
+.barIcon > .icon-090sun{
+  box-sizing: border-box;
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  color: rgba(239,94,31,1);
+}
+@keyframes sunRotate {
+  from{transform: rotate(0);}
+  to{transform: rotate(360deg);}
+}
+/* 月亮图标样式及动画 */
+.barIcon > .icon-moon{
+  box-sizing: border-box;
+  color: rgba(32,194,241,1);
+}
+@keyframes rotate {
+  from{transform: rotate(15deg);}
+  to{transform: rotate(30deg);}
+}
+
+
+/* 二-3.2 实时天气容器样式 */
+/* 最外层容器样式 */
+#container{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid:repeat(2,1fr) / 2fr 5fr;
+  grid-template-areas: "a b b""a c c";
+  align-items: center;
+}
+/* 概述框样式，内含地名、实时温度、最高温/最低温、实时天气、空气质量 */
+#brief{
+  grid-area: a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+/* 实时温度数字样式 */
+#curTemp{
+  margin: 0;
+  /* 实时温度数字放大 */
+  font-size: 5rem;
+  color:#000;
+  text-shadow:0px 0px 0.8rem rgba(145, 95, 35, 1);
+}
+/* 最低温度数字样式 */
+#lowTemp{
+  color:rgba(145, 95, 35, 0.6)
+}
+
+/* 分项内容容器样式，内含3个分项 */
+#indexContainer{
+  grid-area: b;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+/* 分项中的数据样式 */
+.white{
+  color: rgba(238,247,242,1);
+}
+/* 四角边框样式 */
+.flexC{
+  background:
+    linear-gradient(to left, #11c1c7, #11c1c7) left top no-repeat,
+    linear-gradient(to bottom, #11c1c7, #11c1c7) left top no-repeat,
+    linear-gradient(to left, #11c1c7, #11c1c7) right top no-repeat,
+    linear-gradient(to bottom, #11c1c7, #11c1c7) right top no-repeat,
+    linear-gradient(to left, #11c1c7, #11c1c7) left bottom no-repeat,
+    linear-gradient(to bottom, #11c1c7, #11c1c7) left bottom no-repeat,
+    linear-gradient(to left, #11c1c7, #11c1c7) right bottom no-repeat,
+    linear-gradient(to left, #11c1c7, #11c1c7) right bottom no-repeat;
+    background-size: 0.3em 2em, 2em 0.3em, 0.3em 2em, 2em 0.3em;
+  box-sizing: border-box;
+  margin: 1em;
+  padding: 0.5em;
+  width: 200px;
+  height: 100px;
+}
+/* 对齐图标 */
+#curWeaIcon{
+  display: block;
+  margin: auto 10px;
+  padding-top: 1.6rem;
+  margin-bottom: 1.7rem;
+  color: rgba(238,247,242,1);
+}
+/* 生活贴士框样式及文字缩进 */
+#lifepoint{
+  grid-area: c;
+  text-align: justify;
+}
+.indent{
+  text-indent: 2rem;
+}
+
+/* 二-3.5 7日气温折线图 */
+#daysTempChart{
+  margin: 1px auto;
+  width: 100%;
+  height: 90%;
+  overflow-x: hidden;
+}
+
+/* 二-3.6 daysTip */
+#daysTip > p{
+  box-sizing: border-box;
+  box-shadow: 3px 3px 5px 2px rgba(1, 32, 123, .8),-2px -2px 5px 2px rgba(238,247,242,.7);
+  border-radius: 5px;
+  padding: 0.2rem;
+  height: 1.5rem;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  cursor: wait;
+}
+#daysTip > p:hover{
+  box-shadow: 3px 3px 5px 2px rgba(1, 32, 123, .8),-1px -1px 5px 2px rgba(238,247,242,.5);
+}
+#daysTip > p > span{
+  width: auto;
+  height: 100%;
+  /* 设置文字溢出隐藏 */
+  overflow: hidden;
+  white-space: wrap;
+}
+#daysTip > p:hover span {
+  position: absolute;
+  width: auto;
+  text-overflow: unset;
+  overflow: visible;
+  animation: slide 10s linear infinite normal;
+}
+@keyframes slide {
+  from {
+    top: 0;
+  }
+  20%{
+    top:-85%;
+  }
+  50%{
+    top: -200%;
+  }
+  to {
+    top: -400%;
+  }
+}
+
+/* 四、大、小尺寸适配 */
+@media screen and (width < 1400px) {
+  body{
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  h2{
+    font-size: 1rem;
+  }
+  .boxSet{
+    padding: 1rem;
+  }
+  #content{
+    height: 105%;
+  }
+  /* 今日天气-简述 */
+  #brief > p{
+    margin: 5px 0;
+  }
+  /* 今日天气-四角边框 */
+  .flexC{
+    width: 150px;
+    height: 90px;
+  }
+}
+@media screen and (width < 500px) {
+  body{
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  h2{
+    font-size: 1rem;
+  }
+  .boxSet{
+    padding: 1rem;
+  }
+  #cityChoose{
+    margin: 0 0 0 75%;
+  }
+  #content{
+    height: 300%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content:center;
+  }
+  #now{
+    height: 900px;
+    flex-grow: 2;
+  }
+  #container{
+    grid:3fr;
+    grid-template-areas: "a a a""b b b""c c c";
+  }
+  #wind,#daysTemp{
+    width: auto;
+    height: 900px;
+  }
+  #daysTempChart{
+    width: 600px;
+  }
+}

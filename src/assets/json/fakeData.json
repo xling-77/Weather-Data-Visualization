@@ -1,0 +1,329 @@
+{
+
+"code": 200,
+
+"msg": "success",
+
+"result": {
+
+"list": [
+
+{
+
+"date": "2022-11-25",
+
+"week": "星期五",
+
+"weather": "阴",
+
+"weatherimg": "yin.png",
+
+"weathercode": "yin",
+
+"real": "20℃",
+
+"lowest": "14℃",
+
+"highest": "20℃",
+
+"wind": "南风",
+
+"windspeed": "16",
+
+"windsc": "3-4级",
+
+"sunrise": "06:30",
+
+"sunset": "16:54",
+
+"moonrise": "07:48",
+
+"moondown": "17:54",
+
+"pcpn": "0.0",
+
+"uv_index": "3",
+
+"vis": "25",
+
+"humidity": "78",
+
+"tips": "天气暖和，适宜着单层面料的短套装、T恤衫、薄牛仔、休闲服、职业套装等春秋过渡装。年老体弱者请适当增减衣服。疫情防控不松懈，出门请佩戴口罩。"
+
+},
+
+{
+
+"date": "2022-11-26",
+
+"week": "星期六",
+
+"weather": "多云转阴",
+
+"weatherimg": "yin.png",
+
+"weathercode": "duoyun_yin",
+
+"real": "19℃",
+
+"lowest": "16℃",
+
+"highest": "19℃",
+
+"wind": "东北风",
+
+"windspeed": "16",
+
+"windsc": "3-4级",
+
+"sunrise": "06:31",
+
+"sunset": "16:54",
+
+"moonrise": "08:59",
+
+"moondown": "18:56",
+
+"pcpn": "0.0",
+
+"uv_index": "3",
+
+"vis": "25",
+
+"humidity": "82",
+
+"tips": "天气暖和，适宜着单层面料的短套装、T恤衫、薄牛仔、休闲服、职业套装等春秋过渡装。年老体弱者请适当增减衣服。疫情防控不松懈，出门请佩戴口罩。"
+
+},
+
+{
+
+"date": "2022-11-27",
+
+"week": "星期日",
+
+"weather": "阴转多云",
+
+"weatherimg": "duoyun.png",
+
+"weathercode": "yin_duoyun",
+
+"real": "19℃",
+
+"lowest": "17℃",
+
+"highest": "19℃",
+
+"wind": "东南风",
+
+"windspeed": "16",
+
+"windsc": "3-4级",
+
+"sunrise": "06:32",
+
+"sunset": "16:53",
+
+"moonrise": "10:02",
+
+"moondown": "20:05",
+
+"pcpn": "0.0",
+
+"uv_index": "2",
+
+"vis": "25",
+
+"humidity": "91",
+
+"tips": "天气暖和，适宜着单层面料的短套装、T恤衫、薄牛仔、休闲服、职业套装等春秋过渡装。年老体弱者请适当增减衣服。疫情防控不松懈，出门请佩戴口罩。"
+
+},
+
+{
+
+"date": "2022-11-28",
+
+"week": "星期一",
+
+"weather": "小雨",
+
+"weatherimg": "xiaoyu.png",
+
+"weathercode": "xiaoyu",
+
+"real": "22℃",
+
+"lowest": "13℃",
+
+"highest": "22℃",
+
+"wind": "东南风",
+
+"windspeed": "16",
+
+"windsc": "3-4级",
+
+"sunrise": "06:33",
+
+"sunset": "16:53",
+
+"moonrise": "10:57",
+
+"moondown": "21:17",
+
+"pcpn": "1.0",
+
+"uv_index": "2",
+
+"vis": "16",
+
+"humidity": "88",
+
+"tips": "雨天外出建议携带雨具，并注意安全。天气暖和，适宜着单层面料的短套装、T恤衫、薄牛仔、休闲服、职业套装等春秋过渡装。年老体弱者请适当增减衣服。疫情防控不松懈，出门请佩戴口罩。"
+
+},
+
+{
+
+"date": "2022-11-29",
+
+"week": "星期二",
+
+"weather": "小雨转阴",
+
+"weatherimg": "yin.png",
+
+"weathercode": "xiaoyu_yin",
+
+"real": "16℃",
+
+"lowest": "3℃",
+
+"highest": "16℃",
+
+"wind": "北风",
+
+"windspeed": "24",
+
+"windsc": "3-4级",
+
+"sunrise": "06:34",
+
+"sunset": "16:53",
+
+"moonrise": "11:43",
+
+"moondown": "22:27",
+
+"pcpn": "1.0",
+
+"uv_index": "1",
+
+"vis": "24",
+
+"humidity": "59",
+
+"tips": "该地区今日温差较大，建议根据实际情况适时调整衣着安排。天气暖和，适宜着单层面料的短套装、T恤衫、薄牛仔、休闲服、职业套装等春秋过渡装。年老体弱者请适当增减衣服。疫情防控不松懈，出门请佩戴口罩。"
+
+},
+
+{
+
+"date": "2022-11-30",
+
+"week": "星期三",
+
+"weather": "阴",
+
+"weatherimg": "yin.png",
+
+"weathercode": "yin",
+
+"real": "7℃",
+
+"lowest": "2℃",
+
+"highest": "7℃",
+
+"wind": "北风",
+
+"windspeed": "24",
+
+"windsc": "3-4级",
+
+"sunrise": "06:34",
+
+"sunset": "16:53",
+
+"moonrise": "12:21",
+
+"moondown": "23:34",
+
+"pcpn": "0.0",
+
+"uv_index": "1",
+
+"vis": "25",
+
+"humidity": "58",
+
+"tips": "天气凉，适宜着一到两件羊毛衫、大衣、毛套装、皮夹克等春秋着装；年老体弱者宜着风衣加羊毛衫等厚型春秋着装。疫情防控不松懈，出门请佩戴口罩。"
+
+},
+
+{
+
+"date": "2022-12-01",
+
+"week": "星期四",
+
+"weather": "小雨",
+
+"weatherimg": "xiaoyu.png",
+
+"weathercode": "xiaoyu",
+
+"real": "6℃",
+
+"lowest": "3℃",
+
+"highest": "6℃",
+
+"wind": "北风",
+
+"windspeed": "24",
+
+"windsc": "3-4级",
+
+"sunrise": "06:35",
+
+"sunset": "16:53",
+
+"moonrise": "12:55",
+
+"moondown": "00:37",
+
+"pcpn": "1.0",
+
+"uv_index": "1",
+
+"vis": "25",
+
+"humidity": "71",
+
+"tips": "雨天外出建议携带雨具，并注意安全。天气凉，适宜着一到两件羊毛衫、大衣、毛套装、皮夹克等春秋着装；年老体弱者宜着风衣加羊毛衫等厚型春秋着装。疫情防控不松懈，出门请佩戴口罩。"
+
+}
+
+],
+
+"province": "上海",
+
+"area": "上海",
+
+"areaid": "101020100"
+
+}
+
+}

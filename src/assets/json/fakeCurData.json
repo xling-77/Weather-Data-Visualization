@@ -1,0 +1,41 @@
+{
+  "code": 200,
+  "msg": "success",
+  "result": {
+    "date": "2020-05-23",
+    "week": "星期二",
+    "province": "上海市",
+    "area": "上海市",
+    "areaid": "101020100",
+    "weather": "晴转多云",
+    "weatherimg": "duoyun.png",
+    "weathercode": "qing_duoyun",
+    "real": "18℃",
+    "lowest": "6℃",
+    "highest": "22℃",
+    "wind": "东北风",
+    "windspeed": "7",
+    "windsc": "1-2级",
+    "sunrise": "06:10",
+    "sunset": "22:31",
+    "moonrise": "06:02",
+    "moondown": "22:22",
+    "pcpn": "0.0",
+    "uv_index": "9",
+    "aqi": "34",
+    "quality": "优",
+    "vis": "25",
+    "humidity": "23",
+    "alarmlist": [
+      {
+        "province": "上海市",
+        "city": "上海市",
+        "level": "黄色",
+        "type": "大雾",
+        "content": "上海中心气象台2020年05月23日20时30分发布大雾黄色预警信号：预计今天下半夜到明天早晨本市大部郊区将出现能见度小于500米的雾，局部地区小于200米，请注意防范。",
+        "time": "2020-05-23 20:30:00"
+      }
+    ],
+    "tips": "天气暖和，适宜着单层棉麻面料的短套装、T恤衫、薄牛仔衫裤、休闲服、职业套装等春秋过渡装。年老体弱者请适当增减衣服。空气质量优秀，快去户外呼吸清新空气吧。"
+  }
+}

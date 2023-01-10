@@ -1,5 +1,6 @@
 # Weather-Data-Visualization——基于Vue的天气数据可视化系统
-Urban Weather Data Visualization System Based on Vue, mainly Echarts and Axios configured.
+> Urban Weather Data Visualization System Based on Vue, mainly Echarts and Axios configured.
+
 - **城市级天气数据可视化**，实时展示当前天气情况及预警，便捷获知近期天气情况，助力相关专业人士分析。
 - **主要技术点**：Vue组件化开发、Echarts图表配置、grid && flex && @media响应式布局、Axios请求封装（拦截器、本地缓存命中、取消请求、并发请求）。
 
@@ -27,7 +28,7 @@ Urban Weather Data Visualization System Based on Vue, mainly Echarts and Axios c
 
 6、动态滚动小贴士字幕。
 
-7、适配电脑大屏、手机屏幕。
+7、适配电脑大屏、一般手机屏幕。
 
 8、自动记忆上一次选择的城市，初始化页面即得该城市的实时数据。
 

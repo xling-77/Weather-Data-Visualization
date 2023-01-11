@@ -332,6 +332,7 @@ export default {
     },
     // 图表自适应
     daysResize () {
+      this.daysChart.setOption(this.daysOption)
       this.daysChart.resize()
     }
   }

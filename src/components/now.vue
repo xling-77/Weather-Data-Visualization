@@ -17,22 +17,22 @@
     </div>
     <div id="indexContainer">
       <!-- 实时天气 -->
-      <div class="flexC">
-        <span :class="weatherIcon" class="iconfont" id="curWeaIcon"></span>
+      <div class="corner">
+        <p><span :class="weatherIcon" class="iconfont white"></span></p>
         <p>{{ propdata.weather }}</p>
       </div>
       <!-- 紫外线强度 -->
-      <div class="flexC">
+      <div class="corner">
         <p class="white">{{ uvIndex(propdata.uv_index) }}</p>
         <p>紫外线</p>
       </div>
       <!-- 空气质量 -->
-      <div class="flexC">
+      <div class="corner">
         <p class="white">{{aqiIndex(propdata.aqi)}}</p>
         <p>空气质量</p>
       </div>
     </div>
-    <div id="lifepoint">
+    <div id="point">
       <!-- 天气预警信息。没有就不显示 -->
       <div v-if="alarm">
         <strong>{{ alarmlevel }}{{ alarmtype }}预警</strong>
@@ -100,13 +100,13 @@ export default {
     warningTemp () {
       return (val) => {
         if (val > 40 | val < -25) {
-          return {textShadow: '0 0 0.8rem red'} // red yujing
+          return {textShadow: '0 0 0.8rem red'} // 红色预警
         } else if (val > 37 | val < -20) {
-          return {textShadow: '0 0 0.8rem orange'} // orange yujing
+          return {textShadow: '0 0 0.8rem orange'} // 橙色预警
         } else if (val > 35 | val < -15) {
-          return {textShadow: '0 0 0.8rem yellow'} // yellow yujing
+          return {textShadow: '0 0 0.8rem yellow'} // 黄色预警
         } else if (val < -10) {
-          return {textShadow: '0 0 0.8rem blue'} // blue low yujing
+          return {textShadow: '0 0 0.8rem blue'} // 蓝色低温预警
         } else {
           return val
         }

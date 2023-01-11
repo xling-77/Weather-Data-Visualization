@@ -39,16 +39,25 @@ export default {
     }
   },
   created () {
+    console.log('欢迎访问：基于Vue搭建的城市级天气数据可视化系统。觉得ok可以点个star~~https://github.com/xling-77/Weather-Data-Visualization.git')
     // 此处用预设数据进行演示。如需请求数据，可调用已封装的方法httpdatas（），url相关数据在utils文件夹修改。
     this.curWea = fakeCurData.result
     this.daysWea = fakeData.result
     this.updatedTmes = this.timeFormatter()
   },
   mounted () {
-    visualViewport.addEventListener('resize', this.chartsResize)
+    let that = this
+    visualViewport.addEventListener('resize', function () {
+      that.$refs.days.daysResize()
+      that.$refs.winds.radarResize()
+    })
   },
   beforeDestroy () {
-    visualViewport.removeEventListener('resize', this.chartsResize)
+    let that = this
+    visualViewport.removeEventListener('resize', function () {
+      that.$refs.days.daysResize()
+      that.$refs.winds.radarResize()
+    })
   },
   watch: {
     // 监听从citySelect组件传过来的areaid值。
@@ -79,12 +88,16 @@ export default {
       let day = now.getDate()
       let h = now.getHours()
       let m = now.getMinutes()
+      if (day < 10) {
+        day = `0${day}`
+      }
+      if (h < 10) {
+        h = `0${h}`
+      }
+      if (m < 10) {
+        m = `0${m}`
+      }
       return year + '年' + month + '月' + day + '日' + h + '时' + m + '分'
-    },
-    // echarts图表自适应
-    chartsResize () {
-      this.$refs.days.daysResize()
-      this.$refs.winds.radarResize()
     },
     // 请求接口数据
     httpdatas () {
@@ -112,4 +125,29 @@ export default {
 <style>
 @import url(./assets/css/weatherIcon/iconfont.css);
 @import url(./assets/css/grid.css);
+#app{
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+}
+/* 二-2 头部样式，头部包括：更新时间、城市选择组件 */
+#header{
+  box-sizing: border-box;
+  position: sticky;
+  top: -10px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  justify-content: stretch;
+  padding: 15px;
+  z-index: 1;
+  background-color: #0e3265;
+}
+/* 二-2 头部样式-更新时间 */
+#header > h3{
+  margin: 0;
+  margin-left: 60px;
+  text-align: left;
+}
 </style>

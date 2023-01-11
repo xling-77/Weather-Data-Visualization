@@ -21,6 +21,7 @@ export default {
       // 用于echarts雷达图的数据
       windChart: {}, // echarts实例化对象
       windOption: {}, // echarts图表数据
+      windradius: '75%', // echarts radar图表半径
       optionVal: [1, 1, 1, 1, 1, 1, 1, 1], // echarts系列数据。因采用的是雷达图模拟风向图，共8个方位，数组元素代表风级。
       optionSpeed: 0, // echarts系列数据-元素，主要用于构建optionVal数组。根据【父组件数据的风速windspeed】来确认，最小1，最大12。避免‘3-4级’此类数据，不方便在图表上显示。
       optionStr: '' // echarts提示框数据。依次为 【父组件数据的风向wind】【父组件数据的风级windsc】【父组件数据的风速windspeed】
@@ -192,15 +193,16 @@ export default {
             color: 'rgba(145, 95, 35, 1)',
             fontWeight: 'bold',
             fontSize: '0.8rem',
-            lineHeight: 0,
-            padding: 2
-          }
+            lineHeight: 0
+          },
+          radius: this.windradius
         }
       }
       this.windChart.setOption(this.windOption)
     },
     // 图表自适应
     radarResize () {
+      this.windChart.setOption(this.windOption)
       this.windChart.resize()
     }
   }

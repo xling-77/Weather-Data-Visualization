@@ -33,7 +33,7 @@ body{
 /* 统一盒子样式 */
 .boxSet{
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 0.8rem;
   box-shadow: inset 0 0 1rem 0.5rem rgba(1, 32, 123, 1);
   overflow:scroll;
   text-align: center;
@@ -49,6 +49,7 @@ body{
 h2{
   margin: 0;
   text-align: left;
+  font-size: 1rem;
 }
 /* 小标题前的圆形标记 */
 h2::before{
@@ -59,32 +60,6 @@ h2::before{
   height: 0.5rem;
   content: '';
   background-color: #11c1c7;
-}
-
-#app{
-  width: 100vw;
-  height: 90vh;
-  position: relative;
-}
-/* 二-2 头部样式，头部包括：更新时间、城市选择组件 */
-#header{
-  box-sizing: border-box;
-  position: sticky;
-  top: -10px;
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-  justify-content: stretch;
-  padding: 15px;
-  z-index: 1;
-  background-color: #0e3265;
-}
-/* 二-2 头部样式-更新时间 */
-#header > h3{
-  margin: 0;
-  margin-left: 60px;
-  text-align: left;
 }
 
 /* 二-3 整体布局样式 */
@@ -117,63 +92,16 @@ h2::before{
   grid-area: e;
 }
 
-/* 二-3.3 实时风向图 */
+/* 实时风向图 */
+#wind{
+  min-width: 250px;
+  width: auto;
+}
 #windChart{
-  margin: 0 auto;
+  margin: 0.5rem auto;
   width: 100%;
   height: 90%;
 }
-
-/* 二-3.1 实时日出日落进度图 */
-/* 进度条容器布局 */
-.sunChart{
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-}
-/* 进度条 */
-.bar{
-  margin: 20% auto;
-  width: 60%;
-  height: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 1px 2px rgba(1, 32, 123, 1);
-}
-/* 进度条图标 */
-.barIcon{
-  float:left;
-  box-sizing: border-box;
-  margin-top: -2%;
-  left: -3%;
-  width: 20px;
-  height: 20px;
-  font-size: 1.25rem;
-  transform-origin: center;
-  text-align: center;
-  position: relative;
-}
-/* 太阳图标样式及动画 */
-.barIcon > .icon-090sun{
-  box-sizing: border-box;
-  position: absolute;
-  left: -50%;
-  top: 50%;
-  color: rgba(239,94,31,1);
-}
-@keyframes sunRotate {
-  from{transform: rotate(0);}
-  to{transform: rotate(360deg);}
-}
-/* 月亮图标样式及动画 */
-.barIcon > .icon-moon{
-  box-sizing: border-box;
-  color: rgba(32,194,241,1);
-}
-@keyframes rotate {
-  from{transform: rotate(15deg);}
-  to{transform: rotate(30deg);}
-}
-
 
 /* 二-3.2 实时天气容器样式 */
 /* 最外层容器样式 */
@@ -206,20 +134,20 @@ h2::before{
 #lowTemp{
   color:rgba(145, 95, 35, 0.6)
 }
-
 /* 分项内容容器样式，内含3个分项 */
 #indexContainer{
   grid-area: b;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  white-space: nowrap;
 }
 /* 分项中的数据样式 */
 .white{
   color: rgba(238,247,242,1);
 }
 /* 四角边框样式 */
-.flexC{
+.corner{
   background:
     linear-gradient(to left, #11c1c7, #11c1c7) left top no-repeat,
     linear-gradient(to bottom, #11c1c7, #11c1c7) left top no-repeat,
@@ -231,22 +159,15 @@ h2::before{
     linear-gradient(to left, #11c1c7, #11c1c7) right bottom no-repeat;
     background-size: 0.3em 2em, 2em 0.3em, 0.3em 2em, 2em 0.3em;
   box-sizing: border-box;
-  margin: 1em;
-  padding: 0.5em;
-  width: 200px;
+  padding: 1em;
+  width: 100px;
   height: 100px;
 }
-/* 对齐图标 */
-#curWeaIcon{
-  display: block;
-  margin: auto 10px;
-  padding-top: 1.6rem;
-  margin-bottom: 1.7rem;
-  color: rgba(238,247,242,1);
-}
+
 /* 生活贴士框样式及文字缩进 */
-#lifepoint{
+#point{
   grid-area: c;
+  margin-top: 10px;
   text-align: justify;
 }
 .indent{
@@ -254,113 +175,56 @@ h2::before{
 }
 
 /* 二-3.5 7日气温折线图 */
+#daysTemp{
+  width: auto;
+}
 #daysTempChart{
-  margin: 1px auto;
+  margin: 0.5rem auto;
   width: 100%;
   height: 90%;
   overflow-x: hidden;
 }
 
-/* 二-3.6 daysTip */
-#daysTip > p{
-  box-sizing: border-box;
-  box-shadow: 3px 3px 5px 2px rgba(1, 32, 123, .8),-2px -2px 5px 2px rgba(238,247,242,.7);
-  border-radius: 5px;
-  padding: 0.2rem;
-  height: 1.5rem;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
-  cursor: wait;
-}
-#daysTip > p:hover{
-  box-shadow: 3px 3px 5px 2px rgba(1, 32, 123, .8),-1px -1px 5px 2px rgba(238,247,242,.5);
-}
-#daysTip > p > span{
-  width: auto;
-  height: 100%;
-  /* 设置文字溢出隐藏 */
-  overflow: hidden;
-  white-space: wrap;
-}
-#daysTip > p:hover span {
-  position: absolute;
-  width: auto;
-  text-overflow: unset;
-  overflow: visible;
-  animation: slide 10s linear infinite normal;
-}
-@keyframes slide {
-  from {
-    top: 0;
-  }
-  20%{
-    top:-85%;
-  }
-  50%{
-    top: -200%;
-  }
-  to {
-    top: -400%;
-  }
-}
-
 /* 四、大、小尺寸适配 */
-@media screen and (width < 1400px) {
+@media screen and (max-width:1400px) {
   body{
     font-size: 14px;
     line-height: 1.25;
   }
-  h2{
-    font-size: 1rem;
-  }
   .boxSet{
     padding: 1rem;
   }
-  #content{
-    height: 105%;
-  }
+}
+/* 适配普通笔记本 */
+@media screen and (min-width:1000px) and (max-width:1400px) {
   /* 今日天气-简述 */
   #brief > p{
     margin: 5px 0;
   }
-  /* 今日天气-四角边框 */
-  .flexC{
-    width: 150px;
-    height: 90px;
-  }
 }
-@media screen and (width < 500px) {
-  body{
-    font-size: 14px;
-    line-height: 1.25;
-  }
-  h2{
-    font-size: 1rem;
-  }
-  .boxSet{
-    padding: 1rem;
-  }
-  #cityChoose{
-    margin: 0 0 0 75%;
-  }
+/* 适配一般手机屏幕 */
+@media screen and (max-width:800px) {
   #content{
     height: 300%;
     display: flex;
     flex-flow: column nowrap;
     justify-content:center;
   }
+  /* 实时天气 */
   #now{
     height: 900px;
     flex-grow: 2;
   }
+  /* 实时天气容器 */
   #container{
     grid:3fr;
     grid-template-areas: "a a a""b b b""c c c";
   }
+  /* 实时天气-今日天气简述 */
+  #brief > p{
+    margin: 5px 0;
+  }
   #wind,#daysTemp{
-    width: auto;
     height: 900px;
   }
   #daysTempChart{

@@ -1,6 +1,6 @@
 <template>
 <div class="boxSet" id="riseSet">
-  <h2>日升月落</h2>
+  <h2>日出日落</h2>
   <div class="sunChart">
     <!-- 日出时间 -->
     <div>
@@ -93,7 +93,7 @@ export default {
     // 太阳图标（日出进度条图标）样式
     sunIcon () {
       let step = this.sunDiff
-      if (step > 97) {
+      if (step === 98 || step === 0) {
         return {
           marginLeft: `${step}%`,
           animation: 'none'
@@ -115,7 +115,7 @@ export default {
     // 月亮图标（月出进度条图标）样式
     moonIcon () {
       let step = this.moonDiff
-      if (step > 97) {
+      if (step === 98 || step === 0) {
         return {
           marginLeft: `${step}%`,
           animation: 'none'
@@ -157,5 +157,52 @@ export default {
 </script>
 
 <style>
-
+/* 进度条容器布局 */
+.sunChart{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+/* 进度条 */
+.bar{
+  margin: 20% auto;
+  width: 60%;
+  height: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 1px 2px rgba(1, 32, 123, 1);
+}
+/* 进度条图标 */
+.barIcon{
+  float:left;
+  box-sizing: border-box;
+  margin-top: -2%;
+  left: -3%;
+  width: 20px;
+  height: 20px;
+  font-size: 1.25rem;
+  transform-origin: center;
+  text-align: center;
+  position: relative;
+}
+/* 太阳图标样式及动画 */
+.barIcon > .icon-090sun{
+  box-sizing: border-box;
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  color: rgba(239,94,31,1);
+}
+@keyframes sunRotate {
+  from{transform: rotate(0);}
+  to{transform: rotate(360deg);}
+}
+/* 月亮图标样式及动画 */
+.barIcon > .icon-moon{
+  box-sizing: border-box;
+  color: rgba(32,194,241,1);
+}
+@keyframes rotate {
+  from{transform: rotate(15deg);}
+  to{transform: rotate(30deg);}
+}
 </style>

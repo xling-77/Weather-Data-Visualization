@@ -6,7 +6,7 @@
     </div>
     <div id="content">
       <Now :parentdata="curWea"></Now>
-      <risesetNow :parentdata="curWea"></risesetNow>
+      <risesetNow :parentdata="daysWea"></risesetNow>
       <Wind :parentdata="curWea" ref="winds"></Wind>
       <daysTemp :parentdata="daysWea" ref="days"></daysTemp>
       <daysTip :parentdata="daysWea"></daysTip>
@@ -39,25 +39,26 @@ export default {
     }
   },
   created () {
+    alert('欢迎访问：基于Vue搭建的城市级天气数据可视化系统!点击左上角，您可以自由选择想要的城市。')
     console.log('欢迎访问：基于Vue搭建的城市级天气数据可视化系统。觉得ok可以点个star~~https://github.com/xling-77/Weather-Data-Visualization.git')
-    // 此处用预设数据进行演示。如需请求数据，可调用已封装的方法httpdatas（），url相关数据在utils文件夹修改。
-    this.curWea = fakeCurData.result
-    this.daysWea = fakeData.result
-    this.updatedTmes = this.timeFormatter()
+    if (localStorage.getItem('historyAreaid')) {
+      this.areaid = localStorage.getItem('historyAreaid')
+      Promise.all([api.getWeather1(this.areaid), api.getWeather7(this.areaid)])
+        .then(res => {
+          this.curWea = res[0].data.result
+          this.daysWea = res[1].data.result
+          this.updatedTmes = this.timeFormatter()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   },
   mounted () {
-    let that = this
-    visualViewport.addEventListener('resize', function () {
-      that.$refs.days.daysResize()
-      that.$refs.winds.radarResize()
-    })
+    visualViewport.addEventListener('resize', this.chartsResize)
   },
   beforeDestroy () {
-    let that = this
-    visualViewport.removeEventListener('resize', function () {
-      that.$refs.days.daysResize()
-      that.$refs.winds.radarResize()
-    })
+    visualViewport.removeEventListener('resize', this.chartsResize)
   },
   watch: {
     // 监听从citySelect组件传过来的areaid值。
@@ -65,7 +66,6 @@ export default {
       localStorage.setItem('historyAreaid', cur)
       Promise.all([api.getWeather1(cur), api.getWeather7(cur)])
         .then(res => {
-          console.log(res)
           this.curWea = res[0].data.result
           this.daysWea = res[1].data.result
           this.updatedTmes = this.timeFormatter()
@@ -99,24 +99,10 @@ export default {
       }
       return year + '年' + month + '月' + day + '日' + h + '时' + m + '分'
     },
-    // 请求接口数据
-    httpdatas () {
-      if (localStorage.getItem('historyAreaid')) {
-        this.areaid = localStorage.getItem('historyAreaid')
-        Promise.all([api.getWeather1(this.areaid), api.getWeather7(this.areaid)])
-          .then(res => {
-            console.log(res)
-            this.curWea = res[0].data.result
-            this.daysWea = res[1].data.result
-            this.updatedTmes = this.timeFormatter()
-          })
-          .catch(err => {
-            console.log(err)
-          })
-      } else {
-        this.curWea = fakeCurData.result
-        this.daysWea = fakeData.result
-      }
+    // echarts图表自适应
+    chartsResize () {
+      this.$refs.days.daysResize()
+      this.$refs.winds.radarResize()
     }
   }
 }

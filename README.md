@@ -1,4 +1,5 @@
 # Weather-Data-Visualization——基于Vue的天气数据可视化系统
+
 > Urban Weather Data Visualization System Based on Vue, mainly Echarts and Axios configured.
 
 - **城市级天气数据可视化**，实时展示当前天气情况及预警，便捷获知近期天气情况，助力相关专业人士分析。
@@ -7,7 +8,6 @@
 ## 在线体验
 
 地址：[https://xling-77.github.io/Weather-Data-Visualization/](https://xling-77.github.io/Weather-Data-Visualization/)
-> 注：页面展示数据为预设数据，非实时请求。
 
 ## 内置功能
 
@@ -33,13 +33,15 @@
 8、自动记忆上一次选择的城市，初始化页面即得该城市的实时数据。
 
 > 原理：
-> - 基于localStorage API进行本地缓存，减少http请求次数，节省资源（主要是钱包资源）。
+>
+> - 基于localStorage API进行本地缓存，减少http请求次数，节省资源。
 > - 缓存命中规则：请求url、方法、参数一致且缓存数据在上一次请求后24小时内。即：同一城市在24小时内重复查询，数据是上一次的。
 > - 初次查询一个城市时，请求成功会被响应拦截器缓存数据；24h内再次查询，请求拦截器会取消请求并返回缓存数据呈现在页面上。
 
 *数据来源：天行数据API（如需实时数据，需自行注册账号，并修改请求配置）*
 
 ## 参数设置
+
 > 项目第三方依赖：echarts、axios。本地运行请先初始化vue项目，安装相关依赖。
 
 - url地址及请求配置：请移步utils文件夹，url.js存放请求url，index.js存放请求配置。

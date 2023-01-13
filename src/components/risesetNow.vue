@@ -24,7 +24,7 @@
     <!-- 月出时间 -->
     <div>
       <p><span class="iconfont icon-wi-moonrise"></span></p>
-      <p>{{ moonriseTime }}</p>
+      <p>{{ propdata.moonrise }}</p>
     </div>
     <!-- 月亮进度条 -->
     <div class="bar" :style="moonbar">
@@ -35,7 +35,7 @@
     <!-- 月落时间 -->
     <div>
       <p><span class="iconfont icon-wi-moonset"></span></p>
-      <p>{{ moonsetTime }}</p>
+      <p>{{ propdata.moondown }}</p>
     </div>
   </div>
 </div>
@@ -53,7 +53,7 @@ export default {
   },
   data () {
     return {
-      propdata: this.parentdata, // 接收父组件数据，即实时天气情况
+      propdata: this.parentdata.list[0], // 接收父组件数据，即实时天气情况
       sunDiff: '', // 存放日出进度条数值
       moonDiff: '' // 存放月出进度条数值
     }
@@ -61,10 +61,10 @@ export default {
   watch: {
     parentdata: {
       handler (cur, pre) {
-        this.propdata = cur
+        this.propdata = cur.list[0]
         // 在watch中再次调用，保证实时更新
         this.sunDiff = this.nowTime(this.propdata.sunrise, this.propdata.sunset)
-        this.moonDiff = this.nowTime(this.moonriseTime, this.moonsetTime)
+        this.moonDiff = this.nowTime(this.propdata.moonrise, this.propdata.moondown)
       },
       deep: true,
       // 强制立即执行回调
@@ -76,13 +76,6 @@ export default {
     this.moonDiff = this.nowTime(this.moonriseTime, this.moonsetTime)
   },
   computed: {
-    // 后端数据bug：月升月落时间可能为空，故增加计算属性判断
-    moonriseTime () {
-      return this.propdata.moonrise === '' ? '06:00' : this.propdata.moonrise
-    },
-    moonsetTime () {
-      return this.propdata.moondown === '' ? '16:00' : this.propdata.moondown
-    },
     // 日出进度条样式
     sunbar () {
       let step = this.sunDiff
@@ -134,6 +127,7 @@ export default {
       let now = new Date()
       let start = ''
       let end = ''
+      console.log(risetime, settime)
       if (risetime === '' || settime === '') {
         start = new Date('2000-1-1 '.concat('06:00'))
         end = new Date('2000-1-1 '.concat('16:00'))

@@ -34,8 +34,10 @@ export default {
         // echarts系列数据 初始化，避免前后数据交叉造成图表显示不准确。
         this.optionVal = [1, 1, 1, 1, 1, 1, 1, 1]
         // 在watch中再次调用，保证实时更新
-        this.windData()
-        this.drawRadar()
+        this.$nextTick(() => {
+          this.windData()
+          this.drawRadar()
+        })
       },
       deep: true,
       // 强制立即执行回调

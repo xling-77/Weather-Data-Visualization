@@ -31,8 +31,10 @@ export default {
       handler (cur, pre) {
         this.daysWea = cur.list
         // 在watch中再次调用，保证实时更新
-        this.dataSet()
-        this.drawDaysTemp()
+        this.$nextTick(() => {
+          this.dataSet()
+          this.drawDaysTemp()
+        })
       },
       deep: true,
       // 强制立即执行回调
